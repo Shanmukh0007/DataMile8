@@ -1,0 +1,133 @@
+<!-- CSS Styles -->
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Top Section Styles */
+    .top-section {
+        background-color: #3498db;
+        /* Blue color for the top section */
+        padding: 10px;
+        border-bottom: 1px solid #a63e3e;
+        overflow: hidden;
+        /* Clear float */
+        color: #941d1d;
+        /* Text color for the top section */
+        text-align: center;
+    }
+
+    .left-section {
+        float: left;
+        width: 30%;
+    }
+
+    .middle-section {
+        float: left;
+        width: 40%;
+    }
+
+    .right-section {
+        float: right;
+        width: 30%;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        padding: 10px;
+    }
+
+    /* Middle Section Styles */
+    .middle-section {
+        padding: 20px;
+    }
+
+    .post {
+        margin-bottom: 20px;
+    }
+
+    /* Bottom Section Styles */
+    .bottom-section {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        /* Dark background color for the bottom section */
+        padding: 15px 0;
+        color: #fff;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .bottom-section .left-section,
+    .bottom-section .right-section {
+        float: none;
+        display: inline-block;
+        margin: 0 20px;
+    }
+
+    .bottom-section a {
+        color: #0d0d0d;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .bottom-section a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<!-- HTML Content -->
+
+<body>
+    <!-- Top Section -->
+    <div class="top-section">
+        <div class="left-section">
+            <label for="branch-selector">Select Branch:</label>
+            <select id="branch-selector" style="font-size: 16px; padding: 8px; width: 100%;">
+                <option value="CSE">Computer Science and Engineering</option>
+                <option value="ECE">Electrical and Computer Engineering</option>
+                <option value="AI&DS">Artificial Intelligence and Data Science</option>
+            </select>
+        </div>
+
+        <div class="middle-section">
+            <h1>DataMile</h1>
+        </div>
+
+        <div class="right-section">
+            <p>Roll Number: {{ user.rollnumber }}</p>
+            <p>Name: {{ user.Name }}</p>
+            <p>Stream: {{ user.stream }}</p>
+            <p>Project Name: {{ user.projectname }}</p>
+        </div>
+    </div>
+
+    <!-- Middle Section -->
+    <div class="middle-section">
+        {% for project in projects %}
+        <div class="post">
+            <h2>Project Name: {{ project.ProjectName }}</h2>
+            <p>Project Description: {{ project.ProjectDescription }}</p>
+            <p>Team Members :
+            <ul>
+                {% for member in project.members %}
+                <li>{{ member }}</li>
+                {% endfor %}
+            </ul>
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+        <div class="left-section">
+            <a href="{% url 'custom_login' %}">Settings</a>
+        </div>
+        <div class="right-section">
+            <a href="{% url 'createteam' %}">Create Team</a>
+        </div>
+    </div>
+</body>

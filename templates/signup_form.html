@@ -1,0 +1,86 @@
+<!-- HTML code for the login form -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .login-container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container label,
+        .login-container input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .login-container input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <form method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <label for="roll_number">Roll Number:</label>
+            <input type="text" name="roll_number" required><br>
+
+            <label for="name">Name:</label>
+            <input type="text" name="name" required><br>
+
+            <label for="year_of_joining">Year of Joining:</label>
+            <input type="text" name="year_of_joining" required><br>
+
+            <label for="stream">Stream:</label>
+            <input type="text" name="stream" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" required><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <em>Already have an account? Login :</em>
+            <button
+                style="background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 14px;"
+                onclick="window.location.href='{% url 'custom_login' %}'">Login</button>
+        </div>
+
+
+
+    </div>
+</body>
+
+</html>
